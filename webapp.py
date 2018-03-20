@@ -27,9 +27,8 @@ def page2():
     select = "SELECT name from universe"
     select2="SELECT DISTINCT country from universe"
     select3="SELECT DISTINCT deadline from universe"
-    dele = "DELETE from universe where  name='Massachusetts Institute of Technology'"
-    con.execute(dele)
-    #on.execute("INSERT into universe values('Massachusetts Institute of Technology','USA',164,160,95,7,'AWA 5.0','15 December 2017')")
+
+   
     name_list = []
     coun = []
     greq = []
