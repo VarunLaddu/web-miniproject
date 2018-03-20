@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title> Results Table</title>
+	<link rel="stylesheet" href="static/css/tablestyle.css">
+	<meta name="viewport" content="initial-scale=1.0; maximum-scale=1.0; width=device-width;">
+	<script>
+function doit()
+    {
+        var jsonobj=JSON.parse('{{ resdic|tojson|safe }}')
+        var innerstring="<table class='container'> <thead> <th >Name</th> <th > Country</th>" +
+            "<th >Gre Quant</th> <th >Gre Verbal</th> <th >TOEFL</th>"+
+                "<th >IELTS</th> <th >Spec</th> <th >Deadline</th></thead><tbody class='table-hover'>";
+        for (var i=0; i<jsonobj.uname.length;i++)
+        {
+            innerstring+="<tr> <td >"+jsonobj.uname[i]+"</td><td >"+jsonobj.ucountry[i]+"</td><td >"+jsonobj.greq[i]+"</td><td >"+
+                    jsonobj.grev[i]+"</td><td >"+jsonobj.toefl[i]+"</td><td >"+jsonobj.ielts[i]+
+                    "</td><td >"+jsonobj.uspec[i]+"</td><td >"+jsonobj.deadline[i]+"</td></tr>"
+
+        }
+        innerstring+="</tbody></table>"
+        document.getElementById("tabhere").innerHTML=innerstring;
+    }
+</script>
+</head>
+<body onload="doit()">
+<div id="tabhere">
+</body>
+</html>

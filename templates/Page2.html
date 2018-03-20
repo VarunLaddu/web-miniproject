@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <title>Deadline Form</title>
+ 
+  
+  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css'>
+    <script>
+        function errorcheck()
+        {   var i="{{ error }}";
+            if(i.length>0)
+            {
+                alert("{{ error }}")
+            }
+        }
+        function checkit() {
+            greq=document.getElementById('quant').value;
+            grev=document.getElementById('verbal').value;
+            toefl=document.getElementById('toefl').value;
+            ielts=document.getElementById('ielts').value;
+            if(greq>170 || greq<0)
+            {
+                alert("GRE QUANT SCORE MUST BE GREATER THAN 0 AND LESSER THAN 170")
+                return false;
+            }
+            if(grev>170 || grev<0)
+            {
+                alert("GRE VERBAL SCORE MUST BE GREATER THAN 0 AND LESSER THAN 170")
+                return false;
+            }
+            if(toefl>120|| toefl<0)
+            {
+                alert("TOEFL SCORE MUST BE GREATER THAN 0 AND LESSER THAN 120")
+                return false;
+            }
+            if(ielts>9 || ielts<0)
+            {
+                alert("IELTS SCORE MUST BE GREATER THAN 0 AND LESSER THAN 9")
+                return false;
+            }
+        }
+    </script>
+  
+  
+</head>
+
+<body onload="errorcheck()">
+  <div class="container">
+  <form action="" method="POST" >
+    <h2>Enter the details of the universities you want to search</h2>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="univname">University Name:</label>
+          <input type="text" class="form-control" placeholder="" id="univname" name="univname" list="univlist">
+          <datalist id="univlist">
+          {% for i in pagelist %}
+          <option value="{{ i }}"></option>
+          {% endfor %}
+          </datalist>
+      </input>
+        </div>
+      </div>
+      <!--  col-md-6   -->
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="count">Country:</label>
+          <input type="text" class="form-control" placeholder="" id="count" name="count" list="counlist">
+          <datalist id="counlist">
+          	{% for i in country %}
+          	<option value="{{ i }}"></option>
+          	{% endfor %}
+          </datalist>
+      </input>
+        </div>
+      </div>
+      <!--  col-md-6   -->
+    </div>
+
+    	<div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="quant">GRE Quantittive Reasoning Score:</label>
+          <input type="text" class="form-control" placeholder="" id="quant" name="quant">
+        </div>
+      </div>
+      <!--  col-md-6   -->
+    
+
+
+    
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="verbal">GRE Verbal Reasoning Score:</label>
+          <input type="text" class="form-control" placeholder="" id="verbal" name="verbal">
+        </div>
+
+        </div>
+      </div>
+
+      <!--  col-md-6   -->
+      <div class="row">
+      <div class="col-md-6">
+
+        <div class="form-group">
+          <label for="toefl">TOEFL Score:</label>
+          <input type="text" class="form-control" id="toefl" name="toefl" placeholder="">
+        </div>
+      </div>
+      <!--  col-md-6   -->
+    
+    <!--  row   -->
+
+
+    
+      <div class="col-md-6">
+
+        <div class="form-group">
+          <label for="ielts">IELTS Score:</label>
+          <input type="text" class="form-control" id="ielts" placeholder="" name="ielts">
+        </div>
+      </div>
+      </div>
+      <!--  col-md-6   -->
+
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="deadline">Deadline Date</label>
+          <input type="text" list="deadlist" id="deadselect" name="deadselect">
+            <datalist id="deadlist">
+          	{% for i in dead %}
+          	<option value="{{ i }}"></option>
+          	{% endfor %}
+          	<option value="All"></option>
+            </datalist>
+          </input>
+        </div>
+
+      </div>
+      <!--  col-md-6   -->
+    </div>
+    <!--  row   -->
+
+
+  
+
+    <div align="center">
+    <button type="submit" class="btn btn-primary" onsubmit="return checkit()" onclick="return checkit()">Submit</button>
+</div>
+  </form>
+</div>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js'></script>
+
+  
+</body>
+</html>
